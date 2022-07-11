@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mono</title>
+</head>
+<br>
+<h3>Mono</h3>
+{#<img src="{% static image_path %}" alt="Hi!" />#}
+<a target="_blank" rel="noopener noreferrer" href="{{ mono_url }}">Click
+    here</a> to create token to
+import your bank
+account automatically<br>
+Your will meet qr code.<br>
+Than you have two options:<br>
+1. To scan code with your mobile phone where MonoBank application is
+installed<br>
+2. To click on qr code (if you are sitting on web page from your phone). If
+you choose this option, you will be redirected to MonoBank application where
+you will need to confirm authentication on https://api.monobank.ua/ url<br>
+
+<h3>Then</h3>
+You will see something like this:<br>
+<img src="{% static 'example_monobank_2.jpg' %}"
+     alt="example_monobank_2.jpg" width="700" height="500"/><br>
+<br>
+You need to click "Активувати" and then you will see the token<br>
+Please copy this token, and paste here.<br>
+<br>
+
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="token">Please enter your token</label><br>
+        <input name="token">
+    </div>
+    <div>
+        <button>Confirm</button>
+    </div>
+</form>
+<br>
+
+We will use it to automatically get your actions from your bank account<br>
+<br>
+<img src="{% static 'photo_2022-07-11_15-04-56.jpg' %}"
+     alt="photo_2022.jpg" width="700" height="500"/><br>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends "budget_django/base.html" %}
+{% block content %}
+
+    <article class="media content-section">
+        <div class="media-body">
+            <h3>Statistics</h3>
+            <h2>Most expensive category: Some category</h2>
+            <h2>Sum of costs: 50000</h2>
+            <h2>Income: 50000</h2>
+        </div>
+    </article>
+
+    {% for action in actions %}
+        <article class="media content-section">
+            {#            <img class="rounded-circle article-img" src="{{ action.author_image }}">#}
+            <div class="media-body">
+
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ action.user }}</a>
+                    <small class="text-muted">{{ action.date }}</small>
+                </div>
+
+                <h2><a class="article-title"
+                       href="{% url 'action-detail' action.id %}">{{ action.name }}</a>
+                </h2>
+
+                {% if action.category %}
+                    <b><p class="article-title">
+                        Category: {{ action.category }}</p></b>
+                {% endif %}
+                <p class="article-content">{{ action.content }}</p>
+                <p class="article-content">{{ action.amount }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

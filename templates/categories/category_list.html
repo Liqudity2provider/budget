@@ -1,0 +1,26 @@
+{% extends "budget_django/base.html" %}
+{% block content %}
+    {% for category in categories %}
+        <article class="media content-section">
+            {#            <img class="rounded-circle article-img" src="{{ action.author_image }}">#}
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ category.name }}</a>
+                    <small class="text-muted">
+                        {{ category.description }}</small>
+                </div>
+{#                <h2><a class="article-title"#}
+{#                       href="{% url 'action-detail' action.id %}">{{ action.name }}</a>#}
+{#                </h2>#}
+{#                {% if action.category %}#}
+{#                    <b><p class="article-title">#}
+{#                        Category: {{ action.category }}</p></b>#}
+{#                {% endif %}#}
+{#                <p class="article-content">{{ action.content }}</p>#}
+                {#                {% if action.image %}#}
+                {#                    <img class="center img-fluid" src="{{ action.image }}">#}
+                {#                {% endif %}#}
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

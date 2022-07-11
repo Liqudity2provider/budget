@@ -1,0 +1,34 @@
+{% extends "budget_django/base.html" %}
+{% block content %}
+    {% for integration in user_integrations %}
+        <article class="media content-section">
+            {#            <img class="rounded-circle article-img" src="{{ action.author_image }}">#}
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ integration.name }}</a>
+                    <small class="text-muted">
+                        {{ integration.type_of_integration }}</small>
+                </div>
+                {% if integration.user_integration_info %}
+                    <b><p class="article-title">
+                        Info: {{ integration.user_integration_info }}</p></b>
+                {% endif %}
+{#                <h4><a class="article-title"#}
+{#                       href="{% url 'upload_statistic_from_bank' integration.id %}"#}
+{#                >Upload Statistic from Bank</a>#}
+{#                </h4>#}
+
+
+                <form action="{% url 'upload_statistic_from_bank' integration.id %}" method="post">
+                    <input type="submit" value="Upload Statistic from Bank"/>
+                </form>
+
+
+                {#                <p class="article-content">{{ action.content }}</p>#}
+                {#                {% if action.image %}#}
+                {#                    <img class="center img-fluid" src="{{ action.image }}">#}
+                {#                {% endif %}#}
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
