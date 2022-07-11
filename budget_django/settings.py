@@ -137,4 +137,4 @@ REST_FRAMEWORK = {
     ],
 }
 
-SKIP_TOKEN_PATHS = ["/login/", "/logout/"]
+SKIP_TOKEN_PATHS = ["/login/", "/logout/", "/register/"]
