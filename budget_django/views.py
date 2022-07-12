@@ -130,7 +130,7 @@ class LoginView(APIView):
         else:
             messages.error(request,
                            "Cannot find user with this email and password")
-            return Response(template_name='users/login.html', data={
+            return Response(template_name='budget_django/login.html', data={
                 "form": UserLoginForm
             })
 

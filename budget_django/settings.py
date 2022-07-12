@@ -132,4 +132,3 @@ REST_FRAMEWORK = {
 }
 
 SKIP_TOKEN_PATHS = ["/login/", "/logout/", "/register/"]
-AUTH_USER_MODEL = 'django.contrib.auth.models.User'
