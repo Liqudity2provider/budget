@@ -13,7 +13,9 @@ class JWTMiddleware:
         # Code to be executed for each request before
         # the view (and later middleware) are called.
         self._token = None
-        if request.path not in SKIP_TOKEN_PATHS:
+        formatted_path = str(request.path).replace("/", "")
+        skip_to_logout = [i for i in SKIP_TOKEN_PATHS if i in formatted_path]
+        if skip_to_logout:
             _token = refresh_token_or_redirect(request)
             if not isinstance(_token, str):
                 return redirect('logout')

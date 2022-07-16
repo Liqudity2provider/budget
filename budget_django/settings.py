@@ -141,5 +141,5 @@ REST_FRAMEWORK = {
     ],
 }
 
-SKIP_TOKEN_PATHS = ["/login/", "/logout/", "/register/", '/admin/']
+SKIP_TOKEN_PATHS = ["login", "logout", "register", 'admin']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

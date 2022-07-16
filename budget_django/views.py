@@ -1,6 +1,3 @@
-import json
-
-import requests
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect

@@ -1,7 +1,3 @@
-from datetime import datetime, timedelta
-
-import requests
-from django.core.exceptions import ImproperlyConfigured
 from django.shortcuts import render, redirect
 from django.views import View
 from rest_framework import generics
@@ -10,7 +6,7 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 
 from integrations.integrations_manager import IntegrationManager
-from integrations.models import Integration, UserIntegration
+from integrations.models import UserIntegration
 
 
 class MonoIntegration(View):
@@ -30,7 +26,7 @@ class MonoIntegration(View):
 
 
 class AllIntegrations(generics.ListAPIView):
-    renderer_classes = [TemplateHTMLRenderer]
+    # renderer_classes = [TemplateHTMLRenderer]
 
     def get(self, request, *args, **kwargs):
         if request.jwt_user:
