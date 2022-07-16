@@ -1,0 +1,19 @@
+
+{% extends "budget_django/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <div>
+                        <a class="btn btn-secondary mt-1 mb-1" href="{% url 'action-update' action.id %}">Update</a>
+                        <a class="btn btn-danger mt-1 mb-1" href="{% url 'action-delete' action.id %}">Delete</a>
+                </div>
+            </div>
+            <h2 class="article-title">{{ action.name }}</h2>
+            {% if action.description %}
+                <b><p class="article-title">Description: {{ action.description }}</p></b>
+            {% endif %}
+
+        </div>
+    </article>
+{% endblock content %}

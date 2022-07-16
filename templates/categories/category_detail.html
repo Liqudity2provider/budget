@@ -1,0 +1,23 @@
+
+{% extends "budget_django/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+{#                <a class="mr-2" href="#">{{ category.author }}</a>#}
+{#                <small class="text-muted">{{ post.date_posted }}</small>#}
+                <div>
+{#                    {% if category.user == user %}#}
+                        <a class="btn btn-secondary mt-1 mb-1" href="{% url 'category-update' category.id %}">Update</a>
+                        <a class="btn btn-danger mt-1 mb-1" href="{% url 'category-delete' category.id %}">Delete</a>
+{#                    {% endif %}#}
+                </div>
+            </div>
+            <h2 class="article-title">{{ category.name }}</h2>
+            {% if category.description %}
+                <b><p class="article-title">Description: {{ category.description }}</p></b>
+            {% endif %}
+
+        </div>
+    </article>
+{% endblock content %}

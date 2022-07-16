@@ -10,9 +10,6 @@ class CategorySerializer(serializers.ModelSerializer):
     Serializer of Category model
     """
 
-    # password = serializers.CharField(write_only=True)
-    # password2 = serializers.CharField(write_only=True)
-
     def create(self, validated_data):
         category = Category.objects.create(
             **validated_data
@@ -21,7 +18,7 @@ class CategorySerializer(serializers.ModelSerializer):
         return category
 
     def validate(self, data):
-        fields = self.Meta.model._meta.concrete_fields
+        fields = [f.name for f in self.Meta.model._meta.get_fields()]
         data = get_keys(fields, data)
         return data
 

@@ -38,6 +38,9 @@ class MonobankIntegrationManager:
 
         json_data = self.get_json_data_from_bank_api()
 
+        if isinstance(json_data, dict) and json_data.get("errorDescription"):
+            raise ValueError(json_data.get("errorDescription"))
+
         for activity in json_data:
             date = datetime.fromtimestamp(activity["time"]) if activity.get("time") else None
 

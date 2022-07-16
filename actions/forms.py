@@ -8,23 +8,17 @@ class ActionForm(forms.ModelForm):
     """
     Form for creating Action model
     """
+    category = forms.ModelMultipleChoiceField(required=False, queryset=Action.objects.none(),
+                                              widget=forms.CheckboxSelectMultiple())
+    date = forms.DateTimeField(required=True, widget=forms.widgets.DateInput(attrs={'type': 'date'}))
 
-    name = forms.CharField()
-    description = forms.CharField(required=False, widget=forms.Textarea)
-    amount = forms.IntegerField(required=False)
-    # category = forms.ModelMultipleChoiceField(queryset=Category.objects.filter(user=self.user))
-    income = forms.BooleanField()
-    date = forms.DateTimeField(required=False)
-    details = forms.CharField(required=False, widget=forms.Textarea)
-
-    def __init__(self, user=None, *args, **kwargs):
-        if user is not None:
-            self.fields['category'].queryset = Category.objects.filter(user=user)
-
+    def __init__(self, *args, **kwargs):
+        if "user" not in kwargs:
+            raise KeyError("There is no user defined for ActionForm")
+        self.base_fields["category"].queryset = Category.objects.filter(user=kwargs.pop("user"))
         super(ActionForm, self).__init__(*args, **kwargs)
 
     class Meta:
         model = Action
         fields = "__all__"
         exclude = ('user',)
-

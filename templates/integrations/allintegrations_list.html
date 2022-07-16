@@ -2,7 +2,7 @@
 {% block content %}
     {% for integration in user_integrations %}
         <article class="media content-section">
-            {#            <img class="rounded-circle article-img" src="{{ action.author_image }}">#}
+
             <div class="media-body">
                 <div class="article-metadata">
                     <a class="mr-2" href="#">{{ integration.name }}</a>
@@ -13,10 +13,10 @@
                     <b><p class="article-title">
                         Info: {{ integration.user_integration_info }}</p></b>
                 {% endif %}
-{#                <h4><a class="article-title"#}
-{#                       href="{% url 'upload_statistic_from_bank' integration.id %}"#}
-{#                >Upload Statistic from Bank</a>#}
-{#                </h4>#}
+                {#                <h4><a class="article-title"#}
+                {#                       href="{% url 'upload_statistic_from_bank' integration.id %}"#}
+                {#                >Upload Statistic from Bank</a>#}
+                {#                </h4>#}
 
 
                 <form action="{% url 'upload_statistic_from_bank' integration.id %}" method="post">

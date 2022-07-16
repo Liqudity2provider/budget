@@ -9,18 +9,18 @@ class ActionSerializer(serializers.ModelSerializer):
     Serializer of Action model
     """
 
-    # password = serializers.CharField(write_only=True)
-    # password2 = serializers.CharField(write_only=True)
-
     def create(self, validated_data):
+        categories = validated_data.pop("category", [])
         action = Action.objects.create(
-            **validated_data
+            **validated_data,
         )
+        action.category.add(*categories)
         action.save()
         return action
 
     def validate(self, data):
-        fields = self.Meta.model._meta.concrete_fields
+        fields = [f.name for f in self.Meta.model._meta.get_fields()]
+        data["income"] = True if data["income"] else False
         data = get_keys(fields, data)
         return data
 

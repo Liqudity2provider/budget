@@ -23,13 +23,16 @@
                 <h2><a class="article-title"
                        href="{% url 'action-detail' action.id %}">{{ action.name }}</a>
                 </h2>
-
-                {% if action.category %}
-                    <b><p class="article-title">
-                        Category: {{ action.category }}</p></b>
+                {% if action.category.all %}
+                    {% for category in action.category.all %}
+                        <p>{{ category.name }}</p>
+                    {% endfor %}
                 {% endif %}
-                <p class="article-content">{{ action.content }}</p>
-                <p class="article-content">{{ action.amount }}</p>
+
+                {% if action.amount %}
+                    <p class="article-content">{{ action.amount }}</p>
+                {% endif %}
+
             </div>
         </article>
     {% endfor %}

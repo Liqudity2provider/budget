@@ -9,5 +9,9 @@ urlpatterns = [
          name="manage_bank_account"),
     path('upload_statistic_from_bank/<pk>', UploadStatisticFromBank.as_view(),
          name="upload_statistic_from_bank"),
+    path('add-integration/', UploadStatisticFromBank.as_view(),
+         name="upload_statistic_from_bank"),
+
+    
 
 ]
